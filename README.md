@@ -1,4 +1,3 @@
-# Chronos-
 # Chronos日程管理系统
 
 #### 使用技术
