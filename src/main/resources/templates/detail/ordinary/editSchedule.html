@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/back/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/back/css/iconfont.css}"/>
+    <link rel="stylesheet" th:href="@{/back/css/schedule}"/>
+    <link rel="stylesheet" th:href="@{/back/css/schedule.css}"/>
+    <script th:src="@{/back/js/jquery.js}"></script>
+    <title>更新日程信息</title>
+</head>
+<body class="element">
+<div id="left">
+    <div class="home">
+        <div class="logo">
+            <a href="">
+                <img th:src="@{/back/img/logo.png}" alt="">
+            </a>
+        </div>
+        <div class="text">Chronos_Schedule</div>
+    </div>
+    <div class="box"></div>
+    <div id="project" class="element">
+        <div class="block">
+            <ul th:href="@{/}">
+                <a href="">
+                    <span class="iconfont icon-home"></span>
+                    <span>我的日程</span>
+                </a>
+            </ul>
+        </div>
+        <div class="normal_block">
+            <div class="block">
+                <ul>
+                    <a th:href="@{/displaySchedule}">
+                        <span class="iconfont icon-bangong-richeng"></span>
+                        <span>日程管理中心</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a th:href="@{/insertSchedule}">
+                        <span class="iconfont icon-renwu"></span>
+                        <span>增加日程信息</span>
+                    </a>
+                </ul>
+                <ul class="active" style="padding-left:17px;">
+                    <a href="">
+                        <span class="iconfont icon-mubiao"></span>
+                        <span>更新日程信息</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="normal_block" sec:authorize="hasAuthority('ROLE_privilege')">
+            <div class="block">
+                <ul>
+                    <a th:href="@{/displayCustomer}">
+                        <span class="iconfont icon-guanlipeizhi"></span>
+                        <span>用户管理中心</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a th:href="@{/insertCustomer}">
+                        <span class="iconfont icon-zongjie"></span>
+                        <span>增加用户信息</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a href="">
+                        <span class="iconfont icon-fujian"></span>
+                        <span>更新用户信息</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="right">
+    <div id="head_title" >
+        <div style="float:left;">
+            <span class="title_font">Chronos</span>
+            <a>
+				<span sec:authorize="isAnonymous()" class="iconfont icon-renyuanzengjia" style="padding-left: 20px;font-size: 24px;font-weight: bold" >
+					<a th:href="@{/userLogin}"><span id="login-submit">请</span></a>
+				</span>
+            </a>
+            <span sec:authorize="isAuthenticated()" style="padding-left: 20px;font-size: 18px;">
+                <span sec:authentication="name" style="color: #007bff"></span>您好，您的用户权限为<span sec:authentication="principal.authorities" style="color:darkkhaki"></span>
+                    <a>
+                        <span class="iconfont icon-lingdang" style="font-size: 24px;font-weight: bold">
+                            <form th:action="@{/mylogout}" method="post">
+                                <input th:type="submit" th:value="注销" id="input-submit" />
+                            </form>
+                        </span>
+                    </a>
+            </span>
+        </div>
+    </div>
+    <div id="blank"></div>
+    <div id="content">
+        <div class="jumbotron">
+            <h1>更新日程信息</h1>
+            <p>在这里可以更新你的日程</p>
+        </div>
+        <div class="container">
+            <br>
+            <hr>
+
+            <table border="0">
+                <tr>
+                    <td align="center">
+                        <form name="form1" method="get" th:action="@{/updateCustomer}">
+                            <table width="90%" border="0">
+                                <tr>
+                                    <td width="44%" align="right" class="input_name">日程编号</td>
+                                    <td width="56%" align="left">
+                                        <input type="text" name="id" th:value="${schedule.id}" class="input_border">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="42%" align="right" class="input_name">日程名称</td>
+                                    <td width="58%" align="left">
+                                        <input type="text" name="sch_name" th:value="${schedule.sch_name}" class="input_border">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="input_name">日程颜色</td>
+                                    <td align="left">
+                                        <input type="color" value="#FF0000" name="type" th:value="${schedule.type}" class="input_border">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="input_name">开始时间</td>
+                                    <td align="left">
+                                        <input type="datetime-local" name="start" th:value="${schedule.start}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="input_name">结束时间</td>
+                                    <td align="left">
+                                        <input type="datetime-local" name="end" th:value="${schedule.end}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="input_name">日程备注</td>
+                                    <td align="left">
+                                        <input type="text" name="note" th:value="${schedule.note}" class="input_border">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="input_name">用户名称</td>
+                                    <td align="left">
+                                        <input type="text" name="aUser" th:value="${schedule.aCustomer}" class="input_border">
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="distance">
+                                <input type="submit" name="Submit" value="更新日程信息" class="button">
+                            </p>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/back/js/date.js}"></script>
+</html>

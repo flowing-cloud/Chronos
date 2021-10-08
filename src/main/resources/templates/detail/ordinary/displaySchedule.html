@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" th:href="@{/assets/css/display.css}"/>
+    <link rel="stylesheet" th:href="@{/back/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/back/css/iconfont.css}"/>
+    <title>日程信息表</title>
+</head>
+<body class="element">
+<div id="left">
+    <div class="home">
+        <div class="logo">
+            <a href="">
+                <img th:src="@{/back/img/logo.png}" alt="">
+            </a>
+        </div>
+        <div class="text">Chronos_Schedule</div>
+    </div>
+    <div class="box"></div>
+    <div id="project" class="element">
+        <div class="block">
+            <ul>
+                <a th:href="@{/}">
+                    <span class="iconfont icon-home"></span>
+                    <span>我的日程</span>
+                </a>
+            </ul>
+        </div>
+        <div class="normal_block">
+            <div class="block">
+                <ul class="active" style="padding-left:17px;">
+                    <a th:href="@{/displaySchedule}">
+                        <span class="iconfont icon-bangong-richeng"></span>
+                        <span>日程管理中心</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a th:href="@{/insertSchedule}">
+                        <span class="iconfont icon-renwu"></span>
+                        <span>增加日程信息</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a href="">
+                        <span class="iconfont icon-mubiao"></span>
+                        <span>更新日程信息</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="normal_block" sec:authorize="hasAuthority('ROLE_privilege')">
+            <div class="block">
+                <ul>
+                    <a th:href="@{/displayCustomer}">
+                        <span class="iconfont icon-guanlipeizhi"></span>
+                        <span>用户管理中心</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a th:href="@{/insertCustomer}">
+                        <span class="iconfont icon-zongjie"></span>
+                        <span>增加用户信息</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a href="">
+                        <span class="iconfont icon-fujian"></span>
+                        <span>更新用户信息</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="right">
+    <div id="head_title" >
+        <div style="float:left;">
+            <span class="title_font">Chronos</span>
+            <a>
+				<span sec:authorize="isAnonymous()" class="iconfont icon-renyuanzengjia" style="padding-left: 20px;font-size: 24px;font-weight: bold" >
+					<a th:href="@{/userLogin}"><span id="login-submit">请</span></a>
+				</span>
+            </a>
+            <span sec:authorize="isAuthenticated()" style="padding-left: 20px;font-size: 18px;">
+                <span sec:authentication="name" style="color: #007bff"></span>您好，您的用户权限为<span sec:authentication="principal.authorities" style="color:darkkhaki"></span>
+                    <a>
+                        <span class="iconfont icon-lingdang" style="font-size: 24px;font-weight: bold">
+                            <form th:action="@{/mylogout}" method="post">
+                                <input th:type="submit" th:value="注销" id="input-submit" />
+                            </form>
+                        </span>
+                    </a>
+            </span>
+        </div>
+    </div>
+    <div id="blank"></div>
+    <div id="content">
+        <div class="jumbotron">
+            <h1>日程管理中心</h1>
+            <p>在这里增加、删除、修改你的日程</p>
+        </div>
+        <div class="container">
+            <br>
+            <hr>
+            <h1 style="font-family: 'neo', '华文楷体';">已安排的日程</h1>
+
+            <table border="0">
+                <tr>
+                    <td align="center">
+                        <table width="100%" border="1">
+                            <tr align="center">
+                                <th scope="col">日程编号</th>
+                                <th scope="col">日程名称</th>
+                                <th scope="col">日程颜色</th>
+                                <th scope="col">开始时间</th>
+                                <th scope="col">结束时间</th>
+                                <th scope="col">日程备注</th>
+                                <th scope="col">用户名称</th>
+                                <th scope="col">更新按钮</th>
+                                <th scope="col">删除按钮</th>
+                            </tr>
+                            <tr align="center" th:each="schedule:${schList}">
+                                <td th:text="${schedule.id}"></td>
+                                <td th:text="${schedule.sch_name}"></td>
+                                <td>
+                                    <div th:style="'background-color:' + ${schedule.type} + ''" class="color-td"></div>
+                                </td>
+                                <td th:text="${schedule.start}"></td>
+                                <td th:text="${schedule.end}"></td>
+                                <td>
+                                    <div class="wrap_note" th:text="${schedule.note}" th:title="${schedule.note}">${schedule.note}></div>
+                                </td>
+                                <td th:text="${schedule.aCustomer}"></td>
+                                <td>
+                                    <a th:href="@{/editSchedule(id=${schedule.id})}">
+                                        <button class="btn_up" name="modifyEvent">更新</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/deleteSchedule(id=${schedule.id})}">
+                                        <button class="btn_del" name="deleteEvent">删除</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="center">
+                        <p style="margin-top: 10px">
+                            <a href="/insertSchedule">
+                                <button class="btn_add" name="addEvent">添加</button>
+                            </a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

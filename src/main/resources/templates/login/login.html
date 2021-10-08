@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="#" />
+    <link rel="stylesheet" th:href="@{/assets/css/login.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账号登录</title>
+</head>
+<body>
+<div id="bg">
+    <div id="hint"><!-- 提示框 -->
+        <p>登录失败</p>
+    </div>
+    <div id="login_wrap">
+        <div id="login"><!-- 登录注册切换动画 -->
+            <div id="status">
+                <p  style="color: #fff;font-family: 华文楷体;" th:text="#{login.tip}">请登录</p>
+            </div>
+            <span>
+                    <form th:action="@{/userLogin}" th:method="post" >
+                        <!-- 用户登录错误信息提示框 -->
+                        <div th:if="${param.error}" style="color: #281536;font-weight: bold;font-family: 华文楷体;height: 40px;text-align: center;font-size: 1.1em;" th:text="#{login.error}">
+                            用户名或密码错误，请重新登录！
+                        </div>
+                        <p class="form"><input type="text" id="user" th:placeholder="#{login.username}" name="name"></p>
+                        <p class="form"><input type="password" id="passwd" th:placeholder="#{login.password}" name="pwd"></p>
+                        <div class="checkbox mb-3" style="color: #fff;font-family: 华文楷体;font-size: 1.1em">
+                            <label>
+                                <input type="checkbox" name="rememberme" th:text="#{login.rememberme}">
+                            </label>
+                        </div>
+                        <button class="btn" type="submit" th:text="#{login.button}" onclick="login()">登录</button>
+                        <p style="font-family: Arial;color: #fff;padding-top: 40px">© <i th:text="${currentYear}">2020</i>-<i th:text="${currentYear}+1">2021</i></p>
+                    </form>
+                </span>
+        </div>
+
+        <div id="login_img"><!-- 图片绘制框 -->
+            <span class="circle">
+                    <span></span>
+                    <span></span>
+                </span>
+            <span class="star">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            <span class="fly_star">
+                    <span></span>
+                    <span></span>
+                </span>
+            <p id="title">CHRONOS</p>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/assets/js/login.js}"></script>
+</html>

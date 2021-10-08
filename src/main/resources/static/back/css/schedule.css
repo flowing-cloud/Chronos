@@ -1,0 +1,68 @@
+body{
+    color: #4a4a4a;
+    font-size: 1rem;
+    font-weight: 400;
+    Line-height: 1.5;
+}
+*{margin: 0;padding: 0;}
+ul,ol{list-style: none;}
+a{text-decoration: none;cursor: pointer;}
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eee;
+    text-align: center;
+    font-family:楷体;
+}
+
+.jumbotron h1{
+    font-size: 60px;
+}
+.jumbotron p{
+    font-size: 20px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1344px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
+    color: #363636;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 5px;
+}
+table td{
+    padding: 10px;
+}
+.input_name{
+    font-size: 20px;
+    font-family: 楷体;
+    font-weight: bold;
+}
+.input_border{
+    width: 185px;
+    height: 20px;
+    font-family: "neo","华文楷体";
+}
+.button{
+    width: 150px;
+    height: 31px;
+    background-color: #338FE5;
+    color: white;
+    border: 0;
+    border-radius:5px ;
+    cursor: pointer;
+}
+.distance{
+    margin-top: 40px;
+    margin-right: 20px;
+}
