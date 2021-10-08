@@ -14,22 +14,3 @@
 6. 缓存管理工具：Redis-x64-5.0.10
 7. 缓存图形界面管理：Redis Desktop Manager 2021.3
 8. 浏览器：Microsoft Edge浏览器
-
-#### 项目效果预览
-
-1. 首页预览
-
-   ![index](C:\Users\摅己\Pictures\Screenshots\index.png)
-
-2. 登录预览
-
-   ![Login](C:\Users\摅己\Pictures\Screenshots\Login.png)
-
-3. 日程管理中心
-
-   ![Schedule](C:\Users\摅己\Pictures\Screenshots\Schedule.png)
-
-4. 用户管理中心
-
-5. ![Customer](C:\Users\摅己\Pictures\Screenshots\Customer.png)
-
