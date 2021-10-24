@@ -14,3 +14,22 @@
 6. 缓存管理工具：Redis-x64-5.0.10
 7. 缓存图形界面管理：Redis Desktop Manager 2021.3
 8. 浏览器：Microsoft Edge浏览器
+
+#### 运行结果
+
+- 首页预览
+
+  ![](E:\Chronos\png\index.png)
+
+- 登录预览
+
+  ![](E:\Chronos\png\Login.png)
+
+- 日程管理预览
+
+  ![](E:\Chronos\png\Schedule.png)
+
+- 用户管理预览
+
+  ![Customer](E:\Chronos\png\Customer.png)
+
