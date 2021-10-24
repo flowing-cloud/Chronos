@@ -19,17 +19,17 @@
 
 - 首页预览
 
-  ![](E:\Chronos\png\index.png)
+  ![](./png/index.png)
 
 - 登录预览
 
-  ![](E:\Chronos\png\Login.png)
+  ![](./png/Login.png)
 
 - 日程管理预览
 
-  ![](E:\Chronos\png\Schedule.png)
+  ![](./png/Schedule.png)
 
 - 用户管理预览
 
-  ![Customer](E:\Chronos\png\Customer.png)
+  ![](./png/Customer.png)
 
