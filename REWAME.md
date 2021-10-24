@@ -15,21 +15,23 @@
 7. 缓存图形界面管理：Redis Desktop Manager 2021.3
 8. 浏览器：Microsoft Edge浏览器
 
-#### 项目效果预览
+#### 运行结果
 
-1. 首页预览
+- 首页预览
 
-   ![index](C:\Users\摅己\Pictures\Screenshots\index.png)
+  ![](E:\Chronos\png\index.png)
 
-2. 登录预览
+- 登录预览
 
-   ![Login](C:\Users\摅己\Pictures\Screenshots\Login.png)
+  ![](E:\Chronos\png\Login.png)
 
-3. 日程管理中心
+- 日程管理预览
 
-   ![Schedule](C:\Users\摅己\Pictures\Screenshots\Schedule.png)
+  ![](E:\Chronos\png\Schedule.png)
 
-4. 用户管理中心
+- 用户管理预览
 
-5. ![Customer](C:\Users\摅己\Pictures\Screenshots\Customer.png)
+  ![Customer](E:\Chronos\png\Customer.png)
+
+
 
